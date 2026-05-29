@@ -1,0 +1,30 @@
+{
+  "name": "cit-btp",
+  "version": "1.0.0",
+  "description": "Check Inspection Tool — SAP BTP, CAP, SAPUI5, SAP AI Core (Mistral)",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@sap/cds-dk": "^8",
+    "express": "^4",
+    "@sap-ai-sdk/foundation-models": "^1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "dev": "cds watch",
+    "start": "cds-serve",
+    "watch-admin": "cds watch --open app/admin/",
+    "watch-engineer": "cds watch --open app/engineer/"
+  },
+  "cds": {
+    "requires": {
+      "db": { "kind": "sqlite", "[production]": { "kind": "hana-cloud" } },
+      "aicore": {
+        "kind": "aicore",
+        "[production]": { "vcap": { "label": "aicore" } }
+      }
+    }
+  }
+}
